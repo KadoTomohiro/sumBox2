@@ -15,44 +15,64 @@ export class SumBoxSet {
     return Array.from(this._sumBoxes);
   }
 
+  /**
+   * @description 選択状態のSumBoxの配列
+   */
+  public get selectedSumBoxes(): SumBox[] {
+    return this._sumBoxes.filter(sumBox => sumBox.selected);
+  }
 
+  /**
+   * @description 選択状態のSumBoxのもつ重複のない数字の配列
+   */
+  public get selectedNumbersSummary(): number[] {
+    const numbers = this.selectedSumBoxes.map(sumBox => sumBox.units);
+    const flattenNumbers = numbers.flat();
+    const set = new Set<number>(flattenNumbers);
+    return Array.from(set).sort((a, b) => a - b);
+  }
 
   /**
    *
-   * @param seeds {number[]} 0b000000000~0b111111111の9bitの数値の配列
+   * @param seeds {number[]} シード値の配列
    */
   constructor(public readonly seeds: number[] = []) {
     this._sumBoxes = this.generateSumBoxes(seeds);
   }
 
+  /**
+   * シード値をキーとしてSumBoxをフィルタリングする。フィルタリング結果は新しいSumBoxSetとして返す。
+   * @param query {SumBoxQueryParameter} フィルタリング条件
+   */
   public filter(query: SumBoxQueryParameter): SumBoxSet {
-    const filteredSumBoxes = this._sumBoxes.filter(sumBox => {
-      return this.filterByTotal(query, sumBox)
-        && this.filterByLength(query, sumBox)
-        && this.filterByIncludes(query, sumBox)
-        && this.filterByExcludes(query, sumBox);
+    const filteredSumBoxes = this._sumBoxes.filter(sumBox => sumBox.match(query))
+    const seeds = filteredSumBoxes.map(sumBox => {
+      return sumBox.seed;
     });
+    return new SumBoxSet(seeds);
+  }
 
-    return new SumBoxSet(filteredSumBoxes.map(sumBox => sumBox.seed));
+  /**
+   * シード値をキーとしてSumBoxを取得する
+   * @param seed {number} シード値
+   * */
+  public getSumBox(seed: number): SumBox | undefined {
+    return this._sumBoxes.find(sumBox => sumBox.seed === seed);
+  }
+
+  /**
+   * シード値をキーとして選択状態を切り替える
+   * @param seed
+   * @private
+   */
+  public toggleSelected(seed: number): void {
+    const sumBox = this.getSumBox(seed);
+    if (sumBox) {
+      sumBox.toggleSelected();
+    }
   }
 
   private generateSumBoxes(seeds: number[]) {
     return seeds.map(seed => new SumBox(seed));
-  }
-
-  private filterByTotal(query: SumBoxQueryParameter, sumBox: SumBox) {
-    return query.total === undefined || query.total === sumBox.total;
-  }
-
-  private filterByLength(query: SumBoxQueryParameter, sumBox: SumBox) {
-    return query.length === undefined || query.length === sumBox.length;
-  }
-
-  private filterByIncludes(query: SumBoxQueryParameter, sumBox: SumBox) {
-    return query.includes === undefined || query.includes.every(number => sumBox.units.includes(number));
-  }
-
-  private filterByExcludes(query: SumBoxQueryParameter, sumBox: SumBox) {
-    return query.excludes === undefined || query.excludes.every(number => !sumBox.units.includes(number));
   }
 }

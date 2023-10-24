@@ -1,4 +1,5 @@
 import {sum} from "../utility/sum";
+import { SumBoxQueryParameter } from "./sum-box-query-parameter";
 
 /** SumBox class
  * description: 1~9の重複しない任意の組み合わせのセットを表すクラス。
@@ -32,6 +33,14 @@ export class SumBox {
     return this._units.length;
   }
 
+  private _selected: boolean = true;
+  /**
+   * @description 選択状態
+   */
+  get selected(): boolean {
+    return this._selected;
+  }
+
   /**
    * @param seed{number} 0b000000000~0b111111111の9bitの数値
    */
@@ -43,6 +52,22 @@ export class SumBox {
     this._units = this.generateUnits(seed);
   }
 
+  /** *
+   * @description 選択状態を切り替える
+   */
+  toggleSelected(): void {
+    this._selected = !this._selected;
+  }
+
+  /**
+   * @description クエリ条件に一致するかの判定
+   */
+  match(query: SumBoxQueryParameter): boolean {
+    return this.matchByTotal(query)
+      && this.matchByLength(query)
+      && this.matchByIncludes(query)
+      && this.matchByExcludes(query);
+  }
 
 
   /**
@@ -64,5 +89,21 @@ export class SumBox {
    */
   private verifySeed(seed: number): boolean {
     return seed >= SumBox.MIN_SEED && seed <= SumBox.MAX_SEED;
+  }
+
+  private matchByTotal(query: SumBoxQueryParameter): boolean {
+    return query.total === undefined || query.total === this.total;
+  }
+
+  private matchByLength(query: SumBoxQueryParameter) {
+    return query.length === undefined || query.length === this.length;
+  }
+
+  private matchByIncludes(query: SumBoxQueryParameter) {
+    return query.includes === undefined || query.includes.every(include => this.units.includes(include));
+  }
+
+  private matchByExcludes(query: SumBoxQueryParameter) {
+    return query.excludes === undefined || query.excludes.every(exclude => !this.units.includes(exclude));
   }
 }
