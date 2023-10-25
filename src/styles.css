@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+/* style variables*/
+:root {
+  /* colors */
+  --bgColor:#FFFFFF;
+  --base-color:#8BA7D5;
+  --week-sub-color:#D5E0F1;
+  --strong-sub-color:#4B75B9;
+  --accent-color:#F8D32F;
+  --font: #393939;
+
+  /* scales */
+  --ratio: calc(1.25);
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+
+  /* lines */
+  --border-width: 1px;
+
+}
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* basic settings*/
+* {
+  font-family: helvetica, arial, serif;
+  color: var(--font);
+  font-size: var(--s0);
+}

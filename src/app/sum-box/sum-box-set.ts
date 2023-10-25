@@ -1,5 +1,6 @@
 import {SumBox} from "./sum-box";
 import {SumBoxQueryParameter} from "./sum-box-query-parameter";
+import {distinguish} from "../utility/distinguish";
 
 /**
  * SumBoxSet class
@@ -25,11 +26,20 @@ export class SumBoxSet {
   /**
    * @description 選択状態のSumBoxのもつ重複のない数字の配列
    */
-  public get selectedNumbersSummary(): number[] {
+  public get selectedDistinctUnits(): number[] {
     const numbers = this.selectedSumBoxes.map(sumBox => sumBox.units);
-    const flattenNumbers = numbers.flat();
-    const set = new Set<number>(flattenNumbers);
-    return Array.from(set).sort((a, b) => a - b);
+    const flat = numbers.flat();
+    const distinctUnits = distinguish(flat);
+    return distinctUnits.sort();
+  }
+
+  /**
+   * @description SumBoxの合計値の重複のない配列
+   */
+  public get selectedDistinctTotals(): number[] {
+    const totals = this.selectedSumBoxes.map(sumBox => sumBox.total);
+    const distinctTotals = distinguish(totals);
+    return distinctTotals.sort();
   }
 
   /**

@@ -1,0 +1,11 @@
+.outline {
+  width: var(--s3);
+}
+
+.selected {
+  background-color: #7fb6ff;
+}
+
+.disabled {
+  background-color: #f5f5f5;
+}

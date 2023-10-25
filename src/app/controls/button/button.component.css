@@ -1,0 +1,14 @@
+button {
+  width: 100%;
+  height: var(--s3);
+  text-align: center;
+
+  border: var(--border-width) solid var(--strong-sub-color);
+  border-radius: var(--s-5);
+
+  background-color: var(--bgColor);
+}
+
+button:hover {
+  background-color: var(--week-sub-color);
+}
