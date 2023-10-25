@@ -12,3 +12,7 @@ button {
 button:hover {
   background-color: var(--week-sub-color);
 }
+
+.disabled {
+  background-color: var(--disabled);
+}

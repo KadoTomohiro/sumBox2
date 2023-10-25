@@ -1,50 +1,12 @@
 div {
-  background-color: var(--font);
   display: inline-block;
-  color: var(--accent-color);
+  width: var(--s3);
+  margin: 1rem;
 }
 
-.box1 {
-  width:  var(--s-5);
-  height:  var(--s-5);
+sb-numeric-button {
+  display: inline-block;
+  margin: 1rem;
+
 }
-.box2 {
-  width:  var(--s-4);
-  height:  var(--s-4);
-}
-.box3 {
-  width:  var(--s-3);
-  height:  var(--s-3);
-}
-.box4 {
-  width:  var(--s-2);
-  height:  var(--s-2);
-}
-.box5 {
-  width:  var(--s-1);
-  height:  var(--s-1);
-}
-.box6 {
-  width:  var(--s0);
-  height:  var(--s0);
-}
-.box7 {
-  width:  var(--s1);
-  height:  var(--s1);
-}
-.box8 {
-  width:  var(--s2);
-  height:  var(--s2);
-}
-.box9 {
-  width:  var(--s3);
-  height:  var(--s3);
-}
-.box10 {
-  width:  var(--s4);
-  height:  var(--s4);
-}
-.box11 {
-  width:  var(--s5);
-  height:  var(--s5);
-}
+

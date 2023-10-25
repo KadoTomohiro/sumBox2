@@ -7,6 +7,7 @@
   --strong-sub-color:#4B75B9;
   --accent-color:#F8D32F;
   --font: #393939;
+  --disabled: #797979;
 
   /* scales */
   --ratio: calc(1.25);
@@ -40,3 +41,4 @@
   color: var(--font);
   font-size: var(--s0);
 }
+

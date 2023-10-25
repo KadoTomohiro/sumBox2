@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input} from '@angular/core';
+import {Component, ContentChild, ElementRef, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 @Component({
@@ -20,6 +20,9 @@ export class NumericButtonComponent implements ControlValueAccessor{
 
   onChange: any = () => {};
   onTouched: any = () => {};
+
+  @ContentChild('button') button: ElementRef<HTMLButtonElement> | undefined;
+
   constructor() { }
 
   public onClick(): void {

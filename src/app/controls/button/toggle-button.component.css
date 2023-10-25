@@ -1,0 +1,5 @@
+
+.selected {
+  background-color: var(--strong-sub-color);
+  color: var(--bgColor);
+}
