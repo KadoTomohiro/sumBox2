@@ -1,55 +1,22 @@
-import {Component, ContentChild, ElementRef, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {Component, ContentChild, ElementRef, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'sb-numeric-button',
   templateUrl: './numeric-button.component.html',
-  styleUrls: ['./numeric-button.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NumericButtonComponent),
-      multi: true
-    }
-  ]
+  styleUrls: ['./numeric-button.component.css']
 })
-export class NumericButtonComponent implements ControlValueAccessor{
-  @Input() public disabled: boolean = true;
-  public selected: boolean = false
-
-  onChange: any = () => {};
-  onTouched: any = () => {};
+export class NumericButtonComponent{
+  @Input() public value: number = 0;
+  @Input() public disabled: boolean = false;
+  @Input() public selected: boolean = false;
+  @Output() toggle = new EventEmitter<number>();
 
   @ContentChild('button') button: ElementRef<HTMLButtonElement> | undefined;
 
+
   constructor() { }
 
-  public onClick(): void {
-    if (this.disabled) {
-      return;
-    }
-    this.toggleSelected();
-    this.onChange(this.selected);
-  }
-
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
-  writeValue(select: boolean): void {
-    this.selected = select;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
-
-
-  private toggleSelected() {
-    this.selected = !this.selected;
+  onClick() {
+    this.toggle.emit(this.value);
   }
 }

@@ -26,12 +26,9 @@ export class StackComponent implements OnChanges, AfterContentInit{
   ) { }
 
   ngAfterContentInit(): void {
-    console.log(this.container)
-
     this.setGapScale()
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.container)
     this.setGapScale()
   }
 

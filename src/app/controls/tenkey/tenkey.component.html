@@ -1,13 +1,13 @@
 <sb-tenky-layout>
-  <span class="title">tenkey</span>
-  <sb-numeric-button>1</sb-numeric-button>
-  <sb-numeric-button>2</sb-numeric-button>
-  <sb-numeric-button>3</sb-numeric-button>
-  <sb-numeric-button>4</sb-numeric-button>
-  <sb-numeric-button>5</sb-numeric-button>
-  <sb-numeric-button>6</sb-numeric-button>
-  <sb-numeric-button>7</sb-numeric-button>
-  <sb-numeric-button>8</sb-numeric-button>
-  <sb-numeric-button>9</sb-numeric-button>
-  <sb-button class="command">reset</sb-button>
+  <span class="label">
+    <ng-content></ng-content>
+  </span>
+  <ng-container *ngFor="let baseNumber of baseNumbers">
+    <sb-numeric-button
+      [value]="baseNumber"
+      [selected]="isSelected(baseNumber)"
+      (toggle)="onToggle($event)"
+    ></sb-numeric-button>
+  </ng-container>
+  <sb-button class="command" (click)="reset()">reset</sb-button>
 </sb-tenky-layout>

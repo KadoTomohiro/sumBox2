@@ -1,3 +1,4 @@
-<sb-numeric-button [formControl]="button"></sb-numeric-button>
-
-<sb-tenkey></sb-tenkey>
+<div [formGroup]="form">
+  <sb-tenkey formControlName="length">single</sb-tenkey>
+  <sb-mulch-tenkey formControlName="includes">mulch</sb-mulch-tenkey>
+</div>

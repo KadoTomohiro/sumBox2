@@ -2,10 +2,6 @@ sb-stack {
   display: inline-block;
 }
 
-.title {
-  font-size: var(--s-3);
-  font-weight: bold;
-}
 
 .keys {
   display: inline-grid;
