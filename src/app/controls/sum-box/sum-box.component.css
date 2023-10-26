@@ -1,0 +1,10 @@
+:host {
+  display: inline-block;
+  border: var(--border-width) solid var(--font);
+  padding: var(--s-4);
+}
+
+.container {
+  display: flex;
+  gap: var(--s-5);
+}

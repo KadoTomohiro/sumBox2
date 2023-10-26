@@ -1,7 +1,7 @@
-import { Distinguish } from './distinguish';
+import { distinguish } from './distinguish';
 
-describe('Distinguish', () => {
+describe('distinguish', () => {
   it('should create an instance', () => {
-    expect(new Distinguish()).toBeTruthy();
+    expect(distinguish).toBeTruthy();
   });
 });

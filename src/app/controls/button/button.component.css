@@ -4,7 +4,7 @@ button {
   text-align: center;
 
   border: var(--border-width) solid var(--strong-sub-color);
-  border-radius: var(--s-5);
+  /*border-radius: var(--s-5);*/
 
   background-color: var(--bgColor);
 }
@@ -16,6 +16,10 @@ button:hover {
 .disabled {
   background-color: var(--disabled);
   border-color: var(--disabled);
+}
+
+.selected:hover {
+  background-color: var(--strong-sub-color);
 }
 
 .disabled:hover {

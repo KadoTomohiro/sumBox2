@@ -1,7 +1,7 @@
-<sb-tenky-layout>
-  <span class="label">
+<sb-tenky-layout [width]="width">
+  <sb-label class="label">
     <ng-content></ng-content>
-  </span>
+  </sb-label>
   <ng-container *ngFor="let baseNumber of baseNumbers">
     <sb-numeric-button
       [value]="baseNumber"

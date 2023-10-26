@@ -1,4 +1,4 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {TenkeyTemplate} from './tenkey-template';
 import {generateBaseNumbers} from '../../sum-box/generate-base-numbers';
@@ -20,6 +20,9 @@ export class MulchTenkeyComponent implements ControlValueAccessor, TenkeyTemplat
   selectedNumbers: number[] | undefined;
   onChange: any = () => {};
   onTouched: any = () => {};
+
+  @Input() max: number = 9;
+  @Input() width: number = 3;
 
   constructor() {
     this.baseNumbers = generateBaseNumbers();

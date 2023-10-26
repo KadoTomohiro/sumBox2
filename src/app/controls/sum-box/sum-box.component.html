@@ -1,0 +1,5 @@
+<div class="container">
+  <ng-container  *ngFor="let num of numbers">
+    <sb-numeric-button [value]="num" [selected]="selected(num)" [disabled]="disabled(num)"></sb-numeric-button>
+  </ng-container>
+</div>

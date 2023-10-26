@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, Input, Renderer2, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'sb-tenky-layout',
@@ -6,5 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./tenky-layout.component.css']
 })
 export class TenkyLayoutComponent {
+  @Input() width: number | string = 3;
 
+  @ViewChild('keysContainer', {static: true}) keysContainer: ElementRef | undefined;
+
+  constructor(
+    private renderer: Renderer2
+  ) {}
+
+  ngOnInit() {
+    this.setGridWidth()
+  }
+
+  setGridWidth() {
+    if (this.keysContainer) {
+      this.renderer.setStyle(this.keysContainer.nativeElement, 'grid-template-columns', `repeat(${this.width}, 1fr)`);
+    }
+  }
 }

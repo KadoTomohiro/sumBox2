@@ -2,23 +2,28 @@ import { Injectable } from '@angular/core';
 import {SumBoxSet} from "./sum-box-set";
 import {SumBox} from "./sum-box";
 import {range} from "../utility/range";
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, map} from 'rxjs';
 import {SumBoxQueryParameter} from './sum-box-query-parameter';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SumBoxService {
-  private allSumBoxSets: SumBoxSet;
+  private readonly allSumBoxSets: SumBoxSet;
 
   private _candidateSumBoxSetsSource: BehaviorSubject<SumBoxSet>;
   /** 候補のSumBoxSetの最新の状態を表すストリーム */
-  public candidateSumBoxSets$: Observable<SumBoxSet>
+  public candidateSumBoxSets$: Observable<SumBoxSet>;
+  public summary$: Observable<number[]>;
+
   constructor() {
     // 全パターンのSumBoxSetを生成する
     this.allSumBoxSets = this.generateAllSumBoxSets();
     this._candidateSumBoxSetsSource = new BehaviorSubject<SumBoxSet>(this.allSumBoxSets);
     this.candidateSumBoxSets$ = this._candidateSumBoxSetsSource.asObservable();
+    this.summary$ = this.candidateSumBoxSets$.pipe(
+      map(sumBoxSets => sumBoxSets.selectedDistinctUnits)
+    );
   }
 
   /**
@@ -30,11 +35,12 @@ export class SumBoxService {
   }
 
   /**
-   * シード値をキーとしてSumBoxの選択状態を変更する
+   * SumBoxの選択状態を変更する
    */
-  public toggleSumBoxSelected(seed: number): void {
+  public toggleSumBoxSelected(sumBox: SumBox): void {
     const candidate = this._candidateSumBoxSetsSource.getValue()
-    candidate.toggleSelected(seed)
+    candidate.toggleSelected(sumBox);
+
 
     this.updateCandidateSumBoxSets(candidate);
   }
@@ -54,4 +60,5 @@ export class SumBoxService {
   public updateCandidateSumBoxSets(sumBoxSet: SumBoxSet): void {
     this._candidateSumBoxSetsSource.next(sumBoxSet);
   }
+
 }

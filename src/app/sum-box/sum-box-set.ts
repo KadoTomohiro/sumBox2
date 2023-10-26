@@ -71,15 +71,12 @@ export class SumBoxSet {
   }
 
   /**
-   * シード値をキーとして選択状態を切り替える
-   * @param seed
+   * シード値をキーとして選択状態を切り替えた、新しいSumBoxSetを返す
    * @private
+   * @param sumBox {SumBox} 選択状態を切り替えるSumBox
    */
-  public toggleSelected(seed: number): void {
-    const sumBox = this.getSumBox(seed);
-    if (sumBox) {
-      sumBox.toggleSelected();
-    }
+  public toggleSelected(sumBox: SumBox) {
+    sumBox.toggleSelected();
   }
 
   private generateSumBoxes(seeds: number[]) {

@@ -1,4 +1,5 @@
+/*:host {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*}*/
 
-.label {
-  font-size: var(--s-1);
-}

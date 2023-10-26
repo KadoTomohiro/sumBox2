@@ -1,7 +1,7 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {generateBaseNumbers} from '../../sum-box/generate-base-numbers';
 import {TenkeyTemplate} from './tenkey-template';
+import {range} from '../../utility/range';
 
 @Component({
   selector: 'sb-tenkey',
@@ -17,15 +17,22 @@ import {TenkeyTemplate} from './tenkey-template';
 })
 export class TenkeyComponent implements ControlValueAccessor, TenkeyTemplate {
 
-  baseNumbers: number[]
+  baseNumbers: number[] = [];
   selectedNumber: number | undefined;
   onChange: any = () => {};
   onTouched: any = () => {};
 
+  @Input() max: number = 9;
+
+  @Input() width: number = 3;
+
   constructor() {
-    this.baseNumbers = generateBaseNumbers();
   }
 
+  ngOnInit(): void {
+    this.baseNumbers = range(1, this.max);
+
+  }
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }

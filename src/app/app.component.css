@@ -1,12 +1,26 @@
-div {
-  display: inline-block;
-  width: var(--s3);
-  margin: 1rem;
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s-3);
 }
 
-sb-numeric-button {
+.nine-keys-container {
   display: inline-block;
-  margin: 1rem;
-
 }
 
+.nine-keys {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
+.candidate-container {
+
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(var(--s4), 1fr));
+  gap: var(--s-3);
+}

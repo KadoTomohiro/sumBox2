@@ -3,4 +3,5 @@ export interface TenkeyTemplate {
   isSelected(value: number): boolean;
   onToggle(value: number): void;
   reset(): void;
+  width: number;
 }
