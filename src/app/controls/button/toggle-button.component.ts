@@ -10,9 +10,17 @@ import {Button} from './button';
   ]
 })
 export class ToggleButtonComponent implements Button{
-  classes: { selected: boolean }  = {
-    selected: false
+  classes  = {
+    selected: false,
+    disabled: false,
   };
+  @Input()
+  get disabled(): boolean {
+    return this.classes.disabled;
+  }
+  set disabled(value: boolean) {
+    this.classes.disabled = value;
+  }
 
   @Input()
   get selected() {

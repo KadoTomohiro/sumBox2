@@ -8,5 +8,5 @@ import {FormControl} from "@angular/forms";
 })
 export class AppComponent {
   title = 'sumBox2';
-  button: FormControl = new FormControl(false);
+  button: FormControl = new FormControl({value: false, disabled: true});
 }

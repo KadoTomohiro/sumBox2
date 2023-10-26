@@ -1,0 +1,14 @@
+sb-stack {
+  display: inline-block;
+}
+
+.title {
+  font-size: var(--s-3);
+  font-weight: bold;
+}
+
+.keys {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: var(--s-5);
+}

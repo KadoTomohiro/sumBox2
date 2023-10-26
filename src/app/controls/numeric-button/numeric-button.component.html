@@ -1,7 +1,8 @@
 <div class="outline">
   <sb-toggle-button (click)="onClick()"
                     [selected]="selected"
+                    [disabled]="disabled"
   >
-    {{ numeric }}
+    <ng-content></ng-content>
   </sb-toggle-button>
 </div>

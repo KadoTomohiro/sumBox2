@@ -1,6 +1,6 @@
 button {
   width: 100%;
-  height: var(--s3);
+  height: var(--s4);
   text-align: center;
 
   border: var(--border-width) solid var(--strong-sub-color);
@@ -14,5 +14,10 @@ button:hover {
 }
 
 .disabled {
+  background-color: var(--disabled);
+  border-color: var(--disabled);
+}
+
+.disabled:hover {
   background-color: var(--disabled);
 }

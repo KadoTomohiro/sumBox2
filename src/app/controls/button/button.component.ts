@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Button} from './button';
 
 @Component({
@@ -7,6 +7,5 @@ import {Button} from './button';
   styleUrls: ['./button.component.css']
 })
 export class ButtonComponent implements Button{
-  classes = {};
-
+  classes = {}
 }

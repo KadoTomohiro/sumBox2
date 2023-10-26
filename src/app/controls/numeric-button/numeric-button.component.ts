@@ -14,7 +14,6 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
   ]
 })
 export class NumericButtonComponent implements ControlValueAccessor{
-  @Input() public numeric: number = 0;
   @Input() public disabled: boolean = true;
   public selected: boolean = false
 
@@ -26,7 +25,9 @@ export class NumericButtonComponent implements ControlValueAccessor{
   constructor() { }
 
   public onClick(): void {
-    console.log('click')
+    if (this.disabled) {
+      return;
+    }
     this.toggleSelected();
     this.onChange(this.selected);
   }
