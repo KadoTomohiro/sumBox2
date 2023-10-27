@@ -19,13 +19,31 @@ export class QueryFormService {
     this.queryParameter$ = this.form.valueChanges;
   }
 
+  /**
+   * フォームを構築する
+   * @private
+   */
   private buildForm(): FormGroup {
     return this.fb.nonNullable.group<FormType<SumBoxQueryParameter>>({
-    total: this.fb.nonNullable.control<number | undefined>({value: undefined, disabled: false}),
-    size: this.fb.nonNullable.control<number | undefined>({value: undefined, disabled: false}),
-    includes: this.fb.nonNullable.control<number[] | undefined>({value: undefined, disabled: false}),
-    excludes: this.fb.nonNullable.control<number[] | undefined>({value: undefined, disabled: false}),
-    either: this.fb.nonNullable.control<number[] | undefined>({value: undefined, disabled: false}),
-  });
+      total: this.fb.nonNullable.control<number | undefined>({value: undefined, disabled: false}),
+      size: this.fb.nonNullable.control<number | undefined>({value: undefined, disabled: false}),
+      includes: this.fb.nonNullable.control<number[] | undefined>({value: undefined, disabled: false}),
+      excludes: this.fb.nonNullable.control<number[] | undefined>({value: undefined, disabled: false}),
+      either: this.fb.nonNullable.control<number[] | undefined>({value: undefined, disabled: false}),
+    });
+  }
+
+  /**
+   * フォームをリセットする
+   */
+  reset() {
+    this.form.reset();
+  }
+
+  /**
+   * フォームを更新する
+   */
+  update(query: SumBoxQueryParameter) {
+    this.form.patchValue(query);
   }
 }

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import {SumBoxSet} from "./sum-box-set";
-import {SumBox} from "./sum-box";
-import {range} from "../utility/range";
+import {SumBoxSet} from "../../sum-box/sum-box-set";
+import {SumBox} from "../../sum-box/sum-box";
+import {range} from "../../utility/range";
 import {BehaviorSubject, Observable, map} from 'rxjs';
-import {SumBoxQueryParameter} from './sum-box-query-parameter';
+import {SumBoxQueryParameter} from '../../sum-box/sum-box-query-parameter';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SumBoxService {
+export class CandidatorService {
   private readonly allSumBoxSets: SumBoxSet;
 
   private _candidateSumBoxSetsSource: BehaviorSubject<SumBoxSet>;

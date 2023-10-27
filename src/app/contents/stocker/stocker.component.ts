@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import {SumBoxService} from '../../sum-box/sum-box.service';
+import {CandidatorService} from '../candidator/candidator.service';
 import {Stock} from '../../controls/stock/stock';
 import {QueryFormService} from '../candidator/query-form/query-form.service';
-import {BehaviorSubject, combineLatest, map, Observable} from 'rxjs';
+import { Observable} from 'rxjs';
+import {StockerService} from "./stocker.service";
 
 @Component({
   selector: 'sb-stocker',
@@ -11,34 +12,24 @@ import {BehaviorSubject, combineLatest, map, Observable} from 'rxjs';
 })
 export class StockerComponent {
 
-  stocks: Stock[] = []
-  stock$: Observable<Stock>;
-  stockSubject: BehaviorSubject<Stock | null> = new BehaviorSubject<Stock | null>(null)
+  stocks$: Observable<Stock[] | null> = this.stockerService.stocks$
 
   constructor(
-      private sumBoxService: SumBoxService,
-      private queryFormService: QueryFormService
+      private sumBoxService: CandidatorService,
+      private queryFormService: QueryFormService,
+      private stockerService: StockerService
   ) {
-    this.stock$ = combineLatest([
-      this.sumBoxService.candidateSumBoxSets$,
-      this.queryFormService.queryParameter$
-    ]).pipe(
-        map(([candidates, query]) => {
-          return {candidates, query}
-        })
-    )
-    this.stock$.subscribe(this.stockSubject)
   }
 
   onStockClick() {
-
+    this.stockerService.stock();
   }
 
   onSelect(stock: Stock) {
-
+    this.stockerService.selectStock(stock);
   }
 
-  onRemove() {
-
+  onRemove(index: number) {
+    this.stockerService.removeStock(index);
   }
 }

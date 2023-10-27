@@ -4,6 +4,7 @@ sb-cluster  *:nth-child(2n) {
 
 .container{
     padding: var(--s-2);
+  min-height: 100vh;
 }
 
 .candidate {

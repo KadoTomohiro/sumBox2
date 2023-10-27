@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SumBoxService } from './sum-box.service';
+import { SumBoxService } from './candidator.service';
 
 describe('SumBoxService', () => {
   let service: SumBoxService;
