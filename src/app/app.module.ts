@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NumericButtonComponent } from './controls/numeric-button/numeric-button.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ButtonComponent } from './controls/button/button.component';
 import { ToggleButtonComponent } from './controls/button/toggle-button.component';
 import { TenkeyComponent } from './controls/tenkey/tenkey.component';
@@ -22,6 +22,8 @@ import { CandidatorComponent } from './contents/candidator/candidator.component'
 import { ResultsComponent } from './contents/candidator/results/results.component';
 import { StockerComponent } from './contents/stocker/stocker.component';
 import { StockComponent } from './controls/stock/stock.component';
+import { CalculatorComponent } from './contents/calculator/calculator.component';
+import { TitleComponent } from './controls/title/title.component';
 
 
 @NgModule({
@@ -46,9 +48,12 @@ import { StockComponent } from './controls/stock/stock.component';
     ResultsComponent,
     StockerComponent,
     StockComponent,
+    CalculatorComponent,
+    TitleComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],

@@ -1,11 +1,16 @@
 <sb-cluster>
-    <div class="calculator container">
-        calculator
-    </div>
-    <div class="candidate container">
-        <sb-candidator></sb-candidator>
-    </div>
-    <div class="stocker container">
-        <sb-stocker></sb-stocker>
-    </div>
+    <sb-stack class="calculator container">
+      <sb-title>
+        Calculator
+      </sb-title>
+      <sb-calculator></sb-calculator>
+    </sb-stack>
+    <sb-stack class="candidate container">
+      <sb-title>Candidator</sb-title>
+      <sb-candidator></sb-candidator>
+    </sb-stack>
+    <sb-stack class="stocker container">
+      <sb-title>Stocker</sb-title>
+      <sb-stocker></sb-stocker>
+    </sb-stack>
 </sb-cluster>

@@ -1,20 +1,20 @@
-sb-cluster  *:nth-child(2n) {
+.container:nth-child(2n) {
     background-color: var(--sub-bg-color);
 }
 
 .container{
-    padding: var(--s-2);
+  padding: var(--s-2);
   min-height: 100vh;
 }
 
 .candidate {
-    flex: calc(var(--s4) * 15 + var(--s-3) * 14 + var(--s0)) 1 1;
+  flex: calc(var(--s4) * 15 + var(--s-3) * 14 + var(--s0)) 1 1;
 }
 
 .calculator {
-    flex: 10rem 1 0;
+  flex: 10rem 1 0;
 }
 
 .stocker {
-    flex: 15rem 1 0;
+  flex: 15rem 1 0;
 }

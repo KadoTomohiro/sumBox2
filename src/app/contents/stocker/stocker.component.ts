@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import {CandidatorService} from '../candidator/candidator.service';
 import {Stock} from '../../controls/stock/stock';
-import {QueryFormService} from '../candidator/query-form/query-form.service';
 import { Observable} from 'rxjs';
 import {StockerService} from "./stocker.service";
 
@@ -15,8 +13,6 @@ export class StockerComponent {
   stocks$: Observable<Stock[] | null> = this.stockerService.stocks$
 
   constructor(
-      private sumBoxService: CandidatorService,
-      private queryFormService: QueryFormService,
       private stockerService: StockerService
   ) {
   }

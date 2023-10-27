@@ -1,0 +1,21 @@
+<sb-stack>
+  <sb-cluster>
+    <input type="number" [(ngModel)]="newOperand" (keydown.enter)="onEnter()">
+    <sb-button (click)="onResetClick()">Reset</sb-button>
+  </sb-cluster>
+  <sb-button>total: {{total}}</sb-button>
+  <sb-stack class="operands" [gapScale]="'s-4'">
+    <ng-container *ngFor="let operand of operands; let i = index">
+      <sb-button>
+        <sb-cluster [gapScale]="'s-5'" class="flex-container">
+          <div class="operand">
+            {{operand}}
+          </div>
+          <div class="remove" (click)="onRemoveClick(i)">x</div>
+        </sb-cluster>
+      </sb-button>
+
+    </ng-container>
+  </sb-stack>
+</sb-stack>
+
