@@ -1,26 +1,19 @@
-
-.filter-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--s-3);
+sb-cluster  *:nth-child(2n) {
+    background-color: var(--sub-bg-color);
 }
 
-.nine-keys-container {
-  display: inline-block;
+.container{
+    padding: var(--s-2);
 }
 
-.nine-keys {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--s2);
+.candidate {
+    flex: calc(var(--s4) * 15 + var(--s-3) * 14 + var(--s0)) 1 1;
 }
 
-.candidate-container {
+.calculator {
+    flex: 10rem 1 0;
+}
 
-  flex-wrap: wrap;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(var(--s4), 1fr));
-  gap: var(--s-3);
+.stocker {
+    flex: 15rem 1 0;
 }

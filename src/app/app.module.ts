@@ -15,6 +15,13 @@ import { SumBoxComponent } from './controls/sum-box/sum-box.component';
 import { CandidateSummaryComponent } from './controls/sum-box/candidate-summary.component';
 import { CenterComponent } from './layout-primitive/center/center.component';
 import { LabelComponent } from './controls/label/label.component';
+import { ClusterComponent } from './layout-primitive/cluster/cluster.component';
+import { ShortSizeDirective } from './controls/tenkey/short-size.directive';
+import { QueryFormComponent } from './contents/candidator/query-form/query-form.component';
+import { CandidatorComponent } from './contents/candidator/candidator.component';
+import { ResultsComponent } from './contents/candidator/results/results.component';
+import { StockerComponent } from './contents/stocker/stocker.component';
+import { StockComponent } from './controls/stock/stock.component';
 
 
 @NgModule({
@@ -32,6 +39,13 @@ import { LabelComponent } from './controls/label/label.component';
     CandidateSummaryComponent,
     CenterComponent,
     LabelComponent,
+    ClusterComponent,
+    ShortSizeDirective,
+    QueryFormComponent,
+    CandidatorComponent,
+    ResultsComponent,
+    StockerComponent,
+    StockComponent,
   ],
   imports: [
     BrowserModule,

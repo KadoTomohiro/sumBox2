@@ -1,6 +1,6 @@
 button {
   width: 100%;
-  height: var(--s4);
+  min-height: var(--s4);
   text-align: center;
 
   border: var(--border-width) solid var(--strong-sub-color);

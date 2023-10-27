@@ -1,13 +1,18 @@
-<sb-tenky-layout [width]="width">
+<sb-tenky-layout [width]="width" class="short">
   <sb-label class="label">
     <ng-content></ng-content>
   </sb-label>
-  <ng-container *ngFor="let baseNumber of baseNumbers">
-    <sb-numeric-button
-      [value]="baseNumber"
-      [selected]="isSelected(baseNumber)"
-      (toggle)="onToggle($event)"
-    ></sb-numeric-button>
+  <ng-container *ngFor="let splited of baseNumbers">
+      <sb-cluster [gapScale]="'s-5'">
+        <ng-container *ngFor="let baseNumber of splited">
+
+        <sb-numeric-button
+                [value]="baseNumber"
+                [selected]="isSelected(baseNumber)"
+                (toggle)="onToggle($event)"
+        ></sb-numeric-button>
+        </ng-container>
+      </sb-cluster>
   </ng-container>
   <sb-button class="command" (click)="reset()">reset</sb-button>
 </sb-tenky-layout>

@@ -9,6 +9,7 @@ import {SumBoxTemplate} from './sum-box-template';
 })
 export class SumBoxComponent implements SumBoxTemplate{
   @Input() sumBox: SumBox | undefined;
+  @Input() attentionNumber: number | null = null;
 
   get numbers(): number[] {
     return this.sumBox?.units ?? [];
@@ -19,6 +20,12 @@ export class SumBoxComponent implements SumBoxTemplate{
   }
 
   disabled(_: number): boolean {
-    return !this.selected;
+    return !this.selected(_);
   }
+
+  attention(num: number): boolean {
+    return this.attentionNumber === num;
+  }
+
+  onClick(_: number): void {}
 }

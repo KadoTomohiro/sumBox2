@@ -1,5 +1,5 @@
 export interface TenkeyTemplate {
-  baseNumbers: number[];
+  baseNumbers: number[][];
   isSelected(value: number): boolean;
   onToggle(value: number): void;
   reset(): void;

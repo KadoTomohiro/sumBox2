@@ -16,6 +16,8 @@ export class SumBoxService {
   public candidateSumBoxSets$: Observable<SumBoxSet>;
   public summary$: Observable<number[]>;
 
+  public attentionSource = new BehaviorSubject<number | null>(null);
+  public attentions$: Observable<number | null> = this.attentionSource.asObservable();
   constructor() {
     // 全パターンのSumBoxSetを生成する
     this.allSumBoxSets = this.generateAllSumBoxSets();
@@ -43,6 +45,11 @@ export class SumBoxService {
 
 
     this.updateCandidateSumBoxSets(candidate);
+  }
+
+  public changeAttention(num: number) {
+    const next = this.attentionSource.getValue() === num ? null : num;
+    this.attentionSource.next(next);
   }
 
   /**

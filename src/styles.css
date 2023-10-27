@@ -2,10 +2,11 @@
 :root {
   /* colors */
   --bgColor:#FFFFFF;
+  --sub-bg-color: #f5f9ff;
   --base-color:#8BA7D5;
   --week-sub-color:#D5E0F1;
   --strong-sub-color:#4B75B9;
-  --accent-color:#F8D32F;
+  --accent-color: #f8832f;
   --font: #393939;
   --disabled: #797979;
 

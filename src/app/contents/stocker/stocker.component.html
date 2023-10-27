@@ -1,0 +1,6 @@
+<sb-stack>
+    <sb-button (click)="onStockClick()">Stock</sb-button>
+    <ng-container *ngFor="let stock of stocks">
+        <sb-stock [stock]="stock" (select)="onSelect($event)" (remove)="onRemove()"></sb-stock>
+    </ng-container>
+</sb-stack>

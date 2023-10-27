@@ -1,9 +1,20 @@
+
+
 sb-stack {
-  display: inline-block;
+  /*display: inline-block;*/
 }
 
 
 .keys {
-  display: inline-grid;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   grid-gap: var(--s-5);
+}
+
+.command {
+}
+.command > * {
+  display: block;
+  width: auto
 }

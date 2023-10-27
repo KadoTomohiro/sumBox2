@@ -43,6 +43,20 @@ export class SumBoxSet {
   }
 
   /**
+   * 候補の総数
+   */
+  public get candidateCount(): number {
+    return this._sumBoxes.length;
+  }
+
+  /**
+   * 選択された候補の総数
+   */
+  public get selectedCount(): number {
+    return this.selectedSumBoxes.length;
+  }
+
+  /**
    *
    * @param seeds {number[]} シード値の配列
    */

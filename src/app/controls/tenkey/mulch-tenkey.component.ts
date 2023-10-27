@@ -2,6 +2,8 @@ import {Component, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {TenkeyTemplate} from './tenkey-template';
 import {generateBaseNumbers} from '../../sum-box/generate-base-numbers';
+import {range} from '../../utility/range';
+import {sliceBySize} from '../../utility/slice-by-size';
 
 @Component({
   selector: 'sb-mulch-tenkey',
@@ -16,7 +18,7 @@ import {generateBaseNumbers} from '../../sum-box/generate-base-numbers';
   ]
 })
 export class MulchTenkeyComponent implements ControlValueAccessor, TenkeyTemplate{
-  baseNumbers: number[];
+  baseNumbers: number[][];
   selectedNumbers: number[] | undefined;
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -25,7 +27,7 @@ export class MulchTenkeyComponent implements ControlValueAccessor, TenkeyTemplat
   @Input() width: number = 3;
 
   constructor() {
-    this.baseNumbers = generateBaseNumbers();
+    this.baseNumbers = sliceBySize(range(1, this.max), 3);
   }
 
   registerOnChange(fn: any): void {

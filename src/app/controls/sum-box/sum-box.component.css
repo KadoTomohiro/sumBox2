@@ -8,3 +8,7 @@
   display: flex;
   gap: var(--s-5);
 }
+
+.attention {
+  box-shadow: 0 0 0 2px var(--accent-color);
+}

@@ -20,7 +20,7 @@ export class TenkyLayoutComponent {
 
   setGridWidth() {
     if (this.keysContainer) {
-      this.renderer.setStyle(this.keysContainer.nativeElement, 'grid-template-columns', `repeat(${this.width}, 1fr)`);
+      // this.renderer.setStyle(this.keysContainer.nativeElement, 'grid-template-columns', `repeat(${this.width}, 1fr)`);
     }
   }
 }

@@ -1,0 +1,18 @@
+<sb-stack>
+    <sb-stack [formGroup]="form">
+        <sb-center>
+            <sb-tenkey formControlName="total" [max]="45" [width]="15" class="total">total</sb-tenkey>
+        </sb-center>
+        <sb-center class="nine-keys-container">
+            <div class="nine-keys">
+                <sb-tenkey formControlName="size" class="size" shortSize>Size</sb-tenkey>
+                <sb-mulch-tenkey formControlName="includes" class="includes" shortSize>Includes</sb-mulch-tenkey>
+                <sb-mulch-tenkey formControlName="excludes" class="excludes" shortSize>Excludes</sb-mulch-tenkey>
+                <sb-mulch-tenkey formControlName="either" class="either" shortSize>Either</sb-mulch-tenkey>
+            </div>
+        </sb-center>
+        <sb-button (click)="reset()">All Reset</sb-button>
+    </sb-stack>
+
+</sb-stack>
+

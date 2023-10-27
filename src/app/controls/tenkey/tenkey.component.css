@@ -3,3 +3,10 @@
 /*  justify-content: center;*/
 /*}*/
 
+:host {
+    max-width: calc(var(--s4) * 15 + var(--s-5) * 14);
+}
+
+.short{
+    max-width: calc(var(--s4) * 3 + var(--s-5) * 2);
+}

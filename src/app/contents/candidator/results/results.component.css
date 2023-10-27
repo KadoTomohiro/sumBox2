@@ -1,0 +1,8 @@
+
+.candidate-container {
+
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(var(--s4), 1fr));
+    gap: var(--s-3);
+}

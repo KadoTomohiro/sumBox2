@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {SumBoxTemplate} from './sum-box-template';
 import {range} from '../../utility/range';
 
@@ -10,6 +10,9 @@ import {range} from '../../utility/range';
 export class CandidateSummaryComponent implements SumBoxTemplate{
 
   @Input() summary: number[] = [];
+  @Input() attentionNumber: number | null = null;
+
+  @Output() select: EventEmitter<number> = new EventEmitter<number>();
 
   numbers: number[] = range(1, 9);
 
@@ -19,6 +22,14 @@ export class CandidateSummaryComponent implements SumBoxTemplate{
 
   disabled(num: number): boolean {
     return !this.selected(num)
+  }
+
+  attention(num: number): boolean {
+    return this.attentionNumber === num;
+  }
+
+  onClick(num: number): void {
+    this.select.emit(num);
   }
 
 

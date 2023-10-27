@@ -2,6 +2,7 @@ import {Component, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {TenkeyTemplate} from './tenkey-template';
 import {range} from '../../utility/range';
+import {sliceBySize} from '../../utility/slice-by-size';
 
 @Component({
   selector: 'sb-tenkey',
@@ -17,7 +18,7 @@ import {range} from '../../utility/range';
 })
 export class TenkeyComponent implements ControlValueAccessor, TenkeyTemplate {
 
-  baseNumbers: number[] = [];
+  baseNumbers: number[][] = [];
   selectedNumber: number | undefined;
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -30,8 +31,7 @@ export class TenkeyComponent implements ControlValueAccessor, TenkeyTemplate {
   }
 
   ngOnInit(): void {
-    this.baseNumbers = range(1, this.max);
-
+    this.baseNumbers = sliceBySize(range(1, this.max), 3);
   }
   registerOnChange(fn: any): void {
     this.onChange = fn;

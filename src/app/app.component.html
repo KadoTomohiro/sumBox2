@@ -1,31 +1,11 @@
-<sb-stack>
-    <sb-stack [formGroup]="form">
-      <sb-center>
-
-        <sb-tenkey formControlName="total" [max]="45" [width]="15" class="total">total</sb-tenkey>
-      </sb-center>
-      <sb-center class="nine-keys-container">
-        <div class="nine-keys">
-          <sb-tenkey formControlName="size" class="size">Size</sb-tenkey>
-          <sb-mulch-tenkey formControlName="includes" class="includes">Includes</sb-mulch-tenkey>
-          <sb-mulch-tenkey formControlName="excludes" class="excludes">Excludes</sb-mulch-tenkey>
-          <sb-mulch-tenkey formControlName="either" class="either">Either</sb-mulch-tenkey>
-        </div>
-      </sb-center>
-    </sb-stack>
-  <sb-center>
-    <sb-stack [gapScale]="'s-5'">
-      <sb-label>Summary</sb-label>
-      <sb-candidate-summary [summary]="(summary$ | async)!"></sb-candidate-summary>
-    </sb-stack>
-  </sb-center>
-  <sb-stack [gapScale]="'s-5'">
-    <sb-label>Candidates</sb-label>
-    <sb-center class="candidate-container">
-      <ng-container *ngFor="let sumBox of candidates$ | async">
-        <sb-sum-box [sumBox]="sumBox" (click)="toggleCandidateSelect(sumBox)"></sb-sum-box>
-      </ng-container>
-    </sb-center>
-  </sb-stack>
-</sb-stack>
-
+<sb-cluster>
+    <div class="calculator container">
+        calculator
+    </div>
+    <div class="candidate container">
+        <sb-candidator></sb-candidator>
+    </div>
+    <div class="stocker container">
+        <sb-stocker></sb-stocker>
+    </div>
+</sb-cluster>
