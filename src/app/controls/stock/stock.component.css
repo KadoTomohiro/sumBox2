@@ -1,5 +1,5 @@
 .grid-container {
-    flex: auto 1 0;
+    flex:  1 0 auto;
     display: grid;
     padding: var(--s-3);
     grid-template-columns: auto 1fr;
@@ -21,7 +21,7 @@
 
 .remove {
     padding: var(--s-5);
-    flex: auto 0 0;
+    flex: 0 0 auto;
     justify-self: center;
     align-self: stretch;
     display: flex;

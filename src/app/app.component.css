@@ -8,13 +8,13 @@
 }
 
 .candidate {
-  flex: calc(var(--s4) * 15 + var(--s-3) * 14 + var(--s0)) 1 1;
+  flex: 1 1 calc(var(--s4) * 15 + var(--s-3) * 14 + var(--s0)) ;
 }
 
 .calculator {
-  flex: 10rem 1 0;
+  flex: 1 1 10rem ;
 }
 
 .stocker {
-  flex: 15rem 1 0;
+  flex: 1 1 10rem ;
 }
