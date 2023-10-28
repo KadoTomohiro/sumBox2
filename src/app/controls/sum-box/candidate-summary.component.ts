@@ -9,7 +9,7 @@ import {range} from '../../utility/range';
 })
 export class CandidateSummaryComponent implements SumBoxTemplate{
 
-  @Input() summary: number[] = [];
+  @Input() summary: number[] | null = [];
   @Input() attentionNumber: number | null = null;
 
   @Output() select: EventEmitter<number> = new EventEmitter<number>();
@@ -17,7 +17,7 @@ export class CandidateSummaryComponent implements SumBoxTemplate{
   numbers: number[] = range(1, 9);
 
   selected(num: number): boolean {
-    return this.summary.includes(num);
+    return this.summary?.includes(num) ?? false;
   };
 
   disabled(num: number): boolean {

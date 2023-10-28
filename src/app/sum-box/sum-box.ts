@@ -90,10 +90,20 @@ export class SumBox {
     return seed >= SumBox.MIN_SEED && seed <= SumBox.MAX_SEED;
   }
 
+  /**
+   * @description クエリのtotalに一致するかを判定する。totalが設定されていない場合、falseを返す。
+   * @param query
+   * @private
+   */
   private matchByTotal(query: SumBoxQueryParameter): boolean {
-    return query.total === undefined || query.total === this.total;
+    return query.total === this.total;
   }
 
+  /**
+   * @description クエリのsizeに一致するかを判定する。sizeが設定されていない場合、trueを返す。
+   * @param query
+   * @private
+   */
   private matchBySize(query: SumBoxQueryParameter) {
     return query.size === undefined || query.size === this.size;
   }

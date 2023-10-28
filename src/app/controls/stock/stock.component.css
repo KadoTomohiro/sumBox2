@@ -19,7 +19,7 @@
     justify-self: start;
 }
 
-.remove {
+.icon {
     padding: var(--s-5);
     flex: 0 0 auto;
     justify-self: center;

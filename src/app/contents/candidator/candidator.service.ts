@@ -11,20 +11,20 @@ import {SumBoxQueryParameter} from '../../sum-box/sum-box-query-parameter';
 export class CandidatorService {
   private readonly allSumBoxSets: SumBoxSet;
 
-  private _candidateSumBoxSetsSource: BehaviorSubject<SumBoxSet>;
+  private _candidateSumBoxSetsSource: BehaviorSubject<SumBoxSet | null> = new BehaviorSubject<SumBoxSet | null>(null);
   /** 候補のSumBoxSetの最新の状態を表すストリーム */
-  public candidateSumBoxSets$: Observable<SumBoxSet>;
-  public summary$: Observable<number[]>;
+  public candidateSumBoxSets$: Observable<SumBoxSet | null>;
+  public summary$: Observable<number[] | null>;
 
   public attentionSource = new BehaviorSubject<number | null>(null);
   public attentions$: Observable<number | null> = this.attentionSource.asObservable();
+
   constructor() {
     // 全パターンのSumBoxSetを生成する
     this.allSumBoxSets = this.generateAllSumBoxSets();
-    this._candidateSumBoxSetsSource = new BehaviorSubject<SumBoxSet>(this.allSumBoxSets);
     this.candidateSumBoxSets$ = this._candidateSumBoxSetsSource.asObservable();
     this.summary$ = this.candidateSumBoxSets$.pipe(
-      map(sumBoxSets => sumBoxSets.selectedDistinctUnits)
+      map(sumBoxSets => sumBoxSets?.selectedDistinctUnits ?? null)
     );
   }
 
@@ -40,11 +40,15 @@ export class CandidatorService {
    * SumBoxの選択状態を変更する
    */
   public toggleSumBoxSelected(sumBox: SumBox): void {
-    const candidate = this._candidateSumBoxSetsSource.getValue()
+    const candidate = this.getCurrentCandidate() ?? this.generateAllSumBoxSets();
     candidate.toggleSelected(sumBox);
 
 
     this.updateCandidateSumBoxSets(candidate);
+  }
+
+  private getCurrentCandidate() {
+    return this._candidateSumBoxSetsSource.getValue();
   }
 
   public changeAttention(num: number) {

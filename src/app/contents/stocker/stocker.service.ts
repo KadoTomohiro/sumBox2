@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, map} from "rxjs";
+import {BehaviorSubject, filter, map} from "rxjs";
 import {Stock} from "../../controls/stock/stock";
 import {QueryFormService} from "../candidator/query-form/query-form.service";
 import {CandidatorService} from "../candidator/candidator.service";
 import {combineLatest} from "rxjs";
+import {SumBoxSet} from "../../sum-box/sum-box-set";
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,7 @@ export class StockerService {
   private startStockMonitoring() {
     // sumBoxのcandidateとqueryFormのqueryを組み合わせてストック状態を監視する
     combineLatest([
-      this.candidatorService.candidateSumBoxSets$,
+      this.candidatorService.candidateSumBoxSets$.pipe(filter((candidate): candidate is SumBoxSet => candidate !== null)),
       this.queryFormService.queryParameter$
     ]).pipe(
       map(([candidates, query]) => {

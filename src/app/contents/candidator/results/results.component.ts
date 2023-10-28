@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {map, Observable} from 'rxjs';
+import {filter, map, Observable} from 'rxjs';
 import {CandidatorService} from '../candidator.service';
 import {SumBox} from '../../../sum-box/sum-box';
+import {SumBoxSet} from "../../../sum-box/sum-box-set";
 
 @Component({
   selector: 'sb-results',
@@ -9,7 +10,7 @@ import {SumBox} from '../../../sum-box/sum-box';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent {
-  summary$: Observable<number[]> = this.candidatorService.summary$;
+  summary$: Observable<number[] | null> = this.candidatorService.summary$;
   candidates$: Observable<SumBox[]>;
   attentions$: Observable<number | null> = this.candidatorService.attentions$;
 
@@ -17,6 +18,7 @@ export class ResultsComponent {
         private candidatorService: CandidatorService
     ) {
       this.candidates$ = this.candidatorService.candidateSumBoxSets$.pipe(
+        filter((candidate): candidate is SumBoxSet => candidate !== null),
           map(sumBoxSets => sumBoxSets.sumBoxes)
       );
     }

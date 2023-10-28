@@ -1,19 +1,20 @@
 <sb-button (click)="onClick()">
     <sb-cluster [gapScale]="'s-5'" class="flex-container">
-        <div class="grid-container">
-            <sb-label class="label">Total</sb-label>
-            <p class="value">{{query.total}}</p>
-            <sb-label class="label">Size</sb-label>
-            <p class="value">{{query.size}}</p>
-            <sb-label class="label">Includes</sb-label>
-            <p class="value">{{query.includes | json}}</p>
-            <sb-label class="label">Excludes</sb-label>
-            <p class="value">{{query.excludes | json}}</p>
-            <sb-label class="label">Either</sb-label>
-            <p class="value">{{query.either | json}}</p>
-            <sb-label class="label">Select</sb-label>
-            <p class="value">{{candidates.selectedCount}}/{{candidates.candidateCount}}</p>
-        </div>
-        <div class="remove" (click)="onRemoveClick()">x</div>
+      <div class="icon"><</div>
+      <div class="grid-container">
+          <sb-label class="label">Total</sb-label>
+          <p class="value">{{query.total}}</p>
+          <sb-label class="label">Size</sb-label>
+          <p class="value">{{query.size}}</p>
+          <sb-label class="label">Includes</sb-label>
+          <p class="value">{{query.includes | json}}</p>
+          <sb-label class="label">Excludes</sb-label>
+          <p class="value">{{query.excludes | json}}</p>
+          <sb-label class="label">Either</sb-label>
+          <p class="value">{{query.either | json}}</p>
+          <sb-label class="label">Select</sb-label>
+          <p class="value">{{candidates.selectedCount}}/{{candidates.candidateCount}}</p>
+      </div>
+      <div class="icon remove" (click)="onRemoveClick()">x</div>
     </sb-cluster>
 </sb-button>
