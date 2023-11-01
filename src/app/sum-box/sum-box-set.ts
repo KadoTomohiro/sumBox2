@@ -1,6 +1,6 @@
-import {SumBox} from "./sum-box";
-import {SumBoxQueryParameter} from "./sum-box-query-parameter";
-import {distinguish} from "../utility/distinguish";
+import {SumBox} from './sum-box';
+import {SumBoxQueryParameter} from './sum-box-query-parameter';
+import {distinguish} from '../utility/distinguish';
 
 /**
  * SumBoxSet class
@@ -93,6 +93,27 @@ export class SumBoxSet {
     sumBox.toggleSelected();
   }
 
+  /**
+   * 選択状態のSumBoxの数値で、全てに共通する数字の配列を返す
+   * @private
+   */
+  public getCommonUnits(): number[] {
+    const selectedSumBoxes = this.selectedSumBoxes;
+
+    const units = selectedSumBoxes.map(sumBox => sumBox.units);
+    if (units.length === 0) {
+        return [];
+    }
+    return units.reduce((prev, current) => {
+      return prev.filter(num => current.includes(num));
+    });
+  }
+
+  /**
+   * シード値の配列からSumBoxの配列を生成する
+   * @param seeds {number[]} シード値の配列
+   * @private
+   */
   private generateSumBoxes(seeds: number[]) {
     return seeds.map(seed => new SumBox(seed));
   }

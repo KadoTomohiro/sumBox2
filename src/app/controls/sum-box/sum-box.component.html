@@ -4,7 +4,10 @@
             [value]="num"
             [selected]="selected(num)"
             [disabled]="disabled(num)"
-            [ngClass]="{attention: attention(num)}"
+            [ngClass]="{
+              attention: attention(num),
+              common: common(num)
+            }"
             (click)="onClick(num)"
     ></sb-numeric-button>
   </ng-container>

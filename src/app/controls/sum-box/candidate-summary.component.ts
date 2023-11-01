@@ -11,6 +11,7 @@ export class CandidateSummaryComponent implements SumBoxTemplate{
 
   @Input() summary: number[] | null = [];
   @Input() attentionNumber: number | null = null;
+  @Input() commons: number[] = [];
 
   @Output() select: EventEmitter<number> = new EventEmitter<number>();
 
@@ -26,6 +27,10 @@ export class CandidateSummaryComponent implements SumBoxTemplate{
 
   attention(num: number): boolean {
     return this.attentionNumber === num;
+  }
+
+  common(num: number): boolean {
+    return this.commons.includes(num);
   }
 
   onClick(num: number): void {

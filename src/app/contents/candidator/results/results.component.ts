@@ -13,6 +13,7 @@ export class ResultsComponent {
   summary$: Observable<number[] | null> = this.candidatorService.summary$;
   candidates$: Observable<SumBox[]>;
   attentions$: Observable<number | null> = this.candidatorService.attentions$;
+  commons$: Observable<number[]> = this.candidatorService.commons$;
 
     constructor(
         private candidatorService: CandidatorService

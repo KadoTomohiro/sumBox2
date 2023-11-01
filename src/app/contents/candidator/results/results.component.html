@@ -1,14 +1,23 @@
 <sb-center>
     <sb-stack [gapScale]="'s-5'">
         <sb-label>Summary</sb-label>
-        <sb-candidate-summary [summary]="(summary$ | async)!" [attentionNumber]="attentions$ | async" (select)="onSelect($event)"></sb-candidate-summary>
+        <sb-candidate-summary
+                [summary]="(summary$ | async)!"
+                [attentionNumber]="attentions$ | async"
+                [commons]="(commons$ | async) || []"
+                (select)="onSelect($event)"
+        ></sb-candidate-summary>
     </sb-stack>
 </sb-center>
 <sb-stack [gapScale]="'s-5'">
     <sb-label>Candidates</sb-label>
     <sb-center class="candidate-container">
         <ng-container *ngFor="let sumBox of candidates$ | async">
-            <sb-sum-box [sumBox]="sumBox" (click)="toggleCandidateSelect(sumBox)" [attentionNumber]="attentions$ | async" ></sb-sum-box>
+            <sb-sum-box
+                    [sumBox]="sumBox"
+                    [attentionNumber]="attentions$ | async"
+                    [commons]="(commons$ | async) || []"
+                    (click)="toggleCandidateSelect(sumBox)"></sb-sum-box>
         </ng-container>
     </sb-center>
 </sb-stack>

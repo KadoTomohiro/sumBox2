@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SumBoxService } from './candidator.service';
+import { CandidatorService } from './candidator.service';
 
 describe('SumBoxService', () => {
-  let service: SumBoxService;
+  let service: CandidatorService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SumBoxService);
+    service = TestBed.inject(CandidatorService);
   });
 
   it('should be created', () => {
