@@ -13,6 +13,15 @@ input {
   padding: var(--s-3);
 }
 
+
+.total-result {
+  flex: 1 0 auto
+}
+.total-set-mark {
+  flex: 0 1 auto;
+  padding-right: var(--s-3);
+}
+
 .remove {
   padding: var(--s-5);
   flex: 0 0 auto;
