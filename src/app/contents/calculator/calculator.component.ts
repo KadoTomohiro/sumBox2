@@ -1,6 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {CalculatorService} from "./calculator.service";
-import {first, Observable} from "rxjs";
+import {first, map, Observable} from "rxjs";
 import {QueryFormService} from "../candidator/query-form/query-form.service";
 
 @Component({
@@ -43,14 +43,17 @@ export class CalculatorComponent {
 
   onClickQueryTotalSetButton() {
     this.caluculatorService.total$
-      .pipe(first())
+      .pipe(
+        first(),
+        map(total => Math.abs(total))
+      )
       .subscribe(total => {
         this.queryFormService.update({total});
       });
     this.setFocus();
   }
 
-  setFocus() {
+  private setFocus() {
     if (!this.input) {
       return;
     }

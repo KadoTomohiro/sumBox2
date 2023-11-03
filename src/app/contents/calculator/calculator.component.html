@@ -3,7 +3,7 @@
     <input type="number" [(ngModel)]="newOperand" (keydown.enter)="onEnter()" #input>
     <sb-button (click)="onResetClick()">Reset</sb-button>
   </sb-cluster>
-  <sb-button >
+  <sb-button (click)="onClickQueryTotalSetButton()">
     <sb-cluster class="total" [gapScale]="'s4'">
       <span class="total-result">total: {{total$ | async}}</span>
       <span class="total-set-mark">></span>
