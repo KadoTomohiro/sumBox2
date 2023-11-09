@@ -110,6 +110,21 @@ export class SumBoxSet {
   }
 
   /**
+   * 選択状態のSumBox間で、与えられた数値と排他的な関係にある数値の配列を返す
+   */
+  public getExclusiveUnits(num: number): number[] {
+    const selectedSumBoxes = this.selectedSumBoxes;
+
+    const units = selectedSumBoxes.map(sumBox => sumBox.units);
+    if (units.length === 0) {
+      return [];
+    }
+    return units.reduce((prev, current) => {
+      return prev.filter(num => !current.includes(num));
+    });
+  }
+
+  /**
    * シード値の配列からSumBoxの配列を生成する
    * @param seeds {number[]} シード値の配列
    * @private

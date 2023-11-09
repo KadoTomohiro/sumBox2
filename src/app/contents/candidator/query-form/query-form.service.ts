@@ -29,7 +29,8 @@ export class QueryFormService {
       size: this.fb.nonNullable.control<number | undefined>({value: undefined, disabled: false}),
       includes: this.fb.nonNullable.control<number[] | undefined>({value: undefined, disabled: false}),
       excludes: this.fb.nonNullable.control<number[] | undefined>({value: undefined, disabled: false}),
-      either: this.fb.nonNullable.control<number[] | undefined>({value: undefined, disabled: false}),
+      some: this.fb.nonNullable.control<number[] | undefined>({value: undefined, disabled: false}),
+      only: this.fb.nonNullable.control<number[] | undefined>({value: undefined, disabled: false}),
     });
   }
 

@@ -6,5 +6,6 @@ export interface SumBoxQueryParameter {
   size?: number;
   includes?: number[];
   excludes?: number[];
-  either?: number[];
+  some?: number[];
+  only?: number[];
 }

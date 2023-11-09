@@ -60,7 +60,8 @@ export class SumBox {
       && this.matchBySize(query)
       && this.matchByIncludes(query)
       && this.matchByExcludes(query)
-      && this.matchByEither(query)
+      && this.matchBySome(query)
+      && this.matchByOnly(query);
   }
 
   toggleSelected(): void {
@@ -105,19 +106,57 @@ export class SumBox {
    * @private
    */
   private matchBySize(query: SumBoxQueryParameter) {
-    return query.size === undefined || query.size === this.size;
+    const {size} = query;
+    return this.isUndefined(size) || size === this.size;
   }
 
+  /**
+   * @description クエリのincludesに含まれる数字が全て一致するかを判定する。includesが設定されていない場合、trueを返す。
+   * @param query
+   * @private
+   */
   private matchByIncludes(query: SumBoxQueryParameter) {
-    return query.includes === undefined || query.includes.every(include => this.units.includes(include));
+    const {includes} = query;
+    return this.isUndefined(includes) || includes.every(include => this.units.includes(include));
   }
 
+  /**
+   * @description クエリのexcludesに含まれる数字が全て一致しないかを判定する。excludesが設定されていない場合、trueを返す。
+   * @param query
+   * @private
+   */
   private matchByExcludes(query: SumBoxQueryParameter) {
-    return query.excludes === undefined || query.excludes.every(exclude => !this.units.includes(exclude));
+    const {excludes} = query;
+    return this.isUndefined(excludes)|| excludes.every(exclude => !this.units.includes(exclude));
   }
 
-  /** クエリのeitherに含まれる数字のいずれかに一致するかを判定する */
-  private matchByEither(query: SumBoxQueryParameter) {
-    return　query.either === undefined || query.either.length === 0 || query.either.some(either => this.units.includes(either));
+  /**
+   * @description クエリのsomeに含まれる数字のいずれかに一致するかを判定する。someが設定されていない場合、trueを返す。
+   * @param query
+   * @private
+   */
+  private matchBySome(query: SumBoxQueryParameter) {
+    const {some} = query;
+    return　this.isUndefined(some) || this.isEmpty(some)|| some.some(some => this.units.includes(some));
+  }
+
+  /**
+   * @description クエリのonlyに含まれる数字のいずれかに一致するかを判定する。onlyが設定されていない場合、trueを返す。
+   * @param query
+   * @private
+   */
+  private matchByOnly(query: SumBoxQueryParameter) {
+    const {only} = query;
+    console.log(only);
+    return this.isUndefined(only) || this.isEmpty(only)|| only.filter(only => this.units.includes(only)).length === 1;
+  }
+
+  /** クエリがundefinedかを判定する */
+  private isUndefined(queryParameter: SumBoxQueryParameter[keyof SumBoxQueryParameter]):queryParameter is undefined {
+    return queryParameter === undefined;
+  }
+
+  private isEmpty(queryParameter: SumBoxQueryParameter[keyof SumBoxQueryParameter]):queryParameter is [] {
+    return Array.isArray(queryParameter) &&  queryParameter.length === 0
   }
 }
