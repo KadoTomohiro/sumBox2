@@ -70,10 +70,10 @@ export class CandidatorService {
 
   /**
    * 注目対象を変更する
-   * @param num 注目対象の数字
+   * @param unit 注目対象の数字
    */
-  public changeAttention(num: number) {
-    const next = this.attentionSource.getValue() === num ? null : num;
+  public changeAttention(unit: number) {
+    const next = this.attentionSource.getValue() === unit ? null : unit;
     this.attentionSource.next(next);
   }
 
